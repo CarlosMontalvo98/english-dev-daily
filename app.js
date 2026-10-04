@@ -5,7 +5,7 @@ const LEVELS = [
   {
     id: "prea1",
     label: "Pre-A1 · Starter",
-    goal: "Meta: presentarte sin mirar. Si dominas estas 5, ya eres A1.",
+    goal: "Meta: presentarte sin mirar. Al dominarlas pasas a A1 (todavia no eres A1).",
     canDo: "Puedes decir tu nombre, de donde eres y donde trabajas.",
     phrases: [
       { id: "p-name", en: "My name is Alex.", es: "Me llamo Alex.", tip: "I siempre en mayuscula. My = mi. Cambia Alex por tu nombre." },
