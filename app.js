@@ -151,9 +151,8 @@ function renderPhrases() {
       "</div>" +
       "<div class='row'>" +
       "<button data-act='listen'>Escuchar</button>" +
-      "<input type='text' placeholder='Write the ENGLISH for the Spanish above...' aria-label='Escribe la frase en ingles' />" +
+      "<input type='text' placeholder='Escribe aqui el INGLES del español de arriba…' aria-label='Escribe la frase en ingles' />" +
       "<button class='primary' data-act='check'>Comprobar</button>" +
-      "<button data-act='speak'>La dije en voz alta</button>" +
       "<button data-act='reset'>Reintentar</button>" +
       "</div><p class='msg'></p>";
 
@@ -170,11 +169,6 @@ function renderPhrases() {
     if (isDone) msg.innerHTML = "<span class='ok'>Dominada. Repasala manana para no olvidarla.</span>";
 
     card.querySelector("[data-act=listen]").onclick = () => speak(phrase.en);
-    card.querySelector("[data-act=speak]").onclick = () => {
-      msg.textContent = "Bien. Ahora escribela sin mirar y dale a Comprobar para marcarla.";
-      msg.className = "msg";
-      input.focus();
-    };
     card.querySelector("[data-act=reset]").onclick = () => {
       delete state.done[key]; saveProgress(state); renderAll();
     };
