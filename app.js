@@ -71,6 +71,7 @@ const LEVELS = [
 ];
 
 const storeKey = "engdaily_progress_v1";
+const peekKey = "engdaily_peeked_v1";
 const taskKey = () => "engdaily_tasks_" + new Date().toISOString().slice(0, 10);
 
 function loadProgress() {
@@ -78,6 +79,23 @@ function loadProgress() {
   catch { return { done: {} }; }
 }
 function saveProgress(state) { localStorage.setItem(storeKey, JSON.stringify(state)); }
+
+// Ojo usado: si revelaste el ingles, esa frase no cuenta como dominada
+// hasta reintentarla sin mirar. Se guarda para que valga entre sesiones.
+function loadPeeked() {
+  try { return JSON.parse(localStorage.getItem(peekKey) || '{}'); }
+  catch { return {}; }
+}
+function savePeeked(peeked) { localStorage.setItem(peekKey, JSON.stringify(peeked)); }
+let peeked = loadPeeked();
+
+// Primer nivel sin completar: todo lo posterior sigue bloqueado.
+function firstIncompleteIdx() {
+  for (let i = 0; i < LEVELS.length; i++) {
+    if (levelDoneCount(LEVELS[i]) < LEVELS[i].phrases.length) return i;
+  }
+  return LEVELS.length;
+}
 
 let state = loadProgress();
 let activeLevel = LEVELS[0].id;
@@ -101,13 +119,21 @@ function currentLevelLabel() {
 }
 
 function renderTabs() {
+  // Si el nivel activo quedo bloqueado por la nueva regla, vuelve al primero sin completar.
+  const firstOpen = firstIncompleteIdx();
+  if (firstOpen < LEVELS.length && LEVELS.findIndex((l) => l.id === activeLevel) > firstOpen) {
+    activeLevel = LEVELS[firstOpen].id;
+  }
   const box = document.getElementById("levelTabs");
   box.innerHTML = "";
-  LEVELS.forEach((level) => {
+  LEVELS.forEach((level, idx) => {
     const done = levelDoneCount(level);
+    const locked = idx > firstOpen;
     const btn = document.createElement("button");
     btn.className = "tab" + (level.id === activeLevel ? " active" : "");
-    btn.textContent = level.label + " (" + done + "/" + level.phrases.length + ")";
+    btn.textContent = (locked ? "Bloqueado · " : "") + level.label + " (" + done + "/" + level.phrases.length + ")";
+    btn.disabled = locked;
+    btn.title = locked ? "Completa el nivel anterior sin mirar para desbloquear" : "Practicar este nivel";
     btn.onclick = () => { activeLevel = level.id; renderAll(); };
     box.appendChild(btn);
   });
@@ -165,16 +191,33 @@ function renderPhrases() {
       hiddenPart.hidden = !isHidden;
       toggleBtn.textContent = isHidden ? "🙈" : "👁";
       toggleBtn.setAttribute("aria-label", isHidden ? "Ocultar ingles" : "Mostrar ingles");
+      if (isHidden) {
+        // Revelaste el ingles: este intento ya no cuenta, aunque salga verde.
+        peeked[key] = true; savePeeked(peeked);
+      }
     };
     if (isDone) msg.innerHTML = "<span class='ok'>Dominada. Repasala manana para no olvidarla.</span>";
 
     card.querySelector("[data-act=listen]").onclick = () => speak(phrase.en);
     card.querySelector("[data-act=reset]").onclick = () => {
-      delete state.done[key]; saveProgress(state); renderAll();
+      delete state.done[key]; delete peeked[key];
+      saveProgress(state); savePeeked(peeked); renderAll();
     };
     card.querySelector("[data-act=check]").onclick = () => {
       if (normalize(input.value) === normalize(phrase.en)) {
-        state.done[key] = true; saveProgress(state); renderAll();
+        if (peeked[key]) {
+          msg.textContent = "Verde pero no cuenta: usaste el ojito en este intento. Dale Reintentar, tapala y escribela de memoria para dominarla.";
+          msg.className = "msg bad";
+          return;
+        }
+        state.done[key] = true; saveProgress(state);
+        // Si se completo el nivel, avanza solo al siguiente desbloqueado.
+        const level = LEVELS.find((l) => l.id === activeLevel);
+        if (levelDoneCount(level) >= level.phrases.length) {
+          const next = LEVELS[LEVELS.findIndex((l) => l.id === activeLevel) + 1];
+          if (next) activeLevel = next.id;
+        }
+        renderAll();
       } else if (normalize(input.value) === normalize(phrase.es)) {
         msg.textContent = "Eso esta en espanol. Aqui va en INGLES: dale al ojito para verla, tapala y escribela de memoria: \"" + phrase.en + "\"";
         msg.className = "msg bad";
