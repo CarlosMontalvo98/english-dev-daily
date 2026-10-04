@@ -6,7 +6,7 @@ App web PWA: rutina de 1h/dia de Pre-A1 a B2 con frases para la vida diaria y, e
 
 - La PWA se instala en el celular (Chrome > Agregar a pantalla principal), funciona sin internet y pesa menos de 100KB.
 - Un APK implica Expo EAS, firma, permisos de Play y recompilar por cada frase nueva. Innecesario ahora.
-- Esta web sirve como portafolio para entrevistas remotas.
+- Esta web sirve como portafolio: proyecto propio publicado con PWA, i18n y offline.
 
 ## Estructura
 
