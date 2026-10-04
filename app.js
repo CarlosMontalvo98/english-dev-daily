@@ -151,7 +151,7 @@ function renderPhrases() {
       "</div>" +
       "<div class='row'>" +
       "<button data-act='listen'>Escuchar</button>" +
-      "<input type='text' placeholder='Escribela sin mirar...' aria-label='Escribe la frase' />" +
+      "<input type='text' placeholder='Write it in ENGLISH here, tal cual arriba...' aria-label='Escribe la frase en ingles' />" +
       "<button class='primary' data-act='check'>Comprobar</button>" +
       "<button data-act='speak'>La dije en voz alta</button>" +
       "<button data-act='reset'>Reintentar</button>" +
@@ -180,6 +180,9 @@ function renderPhrases() {
     card.querySelector("[data-act=check]").onclick = () => {
       if (normalize(input.value) === normalize(phrase.en)) {
         state.done[key] = true; saveProgress(state); renderAll();
+      } else if (normalize(input.value) === normalize(phrase.es)) {
+        msg.textContent = "Eso esta en espanol. Aqui tienes que escribirla en INGLES, tal cual la ves arriba: \"" + phrase.en + "\"";
+        msg.className = "msg bad";
       } else {
         msg.textContent = "Casi. Escucha de nuevo, fijate en I mayuscula y el punto final. Intenta otra vez.";
         msg.className = "msg bad";
