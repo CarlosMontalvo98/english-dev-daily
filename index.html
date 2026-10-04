@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="English Dev Daily - tu rutina de 1h para llegar a B2 y trabajar remoto. Pre-A1 a B2." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇺🇸</text></svg>" />
+  <title>English Dev Daily · Pre-A1 a B2</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>English Dev Daily</h1>
+      <p class="subtitle">Carlos · Montería · Click Software · 1h/día → B2 empleable</p>
+    </div>
+    <div class="level-box">
+      <span id="currentLevelBadge" class="badge">Tu nivel: Pre-A1</span>
+      <div class="progress"><div id="globalProgress" class="progress-fill" style="width:0%"></div></div>
+      <small id="globalText">0 / 0 frases dominadas</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Elige tu nivel</h2>
+      <p class="hint">Todos abiertos. Recomendado: empieza en Pre-A1 y domina una frase antes de pasar a la siguiente.</p>
+      <div id="levelTabs" class="tabs"></div>
+      <div id="levelInfo" class="level-info"></div>
+    </section>
+
+    <section class="card">
+      <h2>2. Frases de hoy <small id="levelProgressText"></small></h2>
+      <div class="progress"><div id="levelProgress" class="progress-fill" style="width:0%"></div></div>
+      <div id="phraseList"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. Tu rutina 60 min (4×15)</h2>
+      <label class="check"><input type="checkbox" data-task="listen" /> 15 min Listen: escucha cada frase 3 veces con el botón 🔊</label>
+      <label class="check"><input type="checkbox" data-task="vocab" /> 15 min Vocab: repite en voz alta 3 veces cada frase</label>
+      <label class="check"><input type="checkbox" data-task="grammar" /> 15 min Grammar: escribe cada frase sin mirar y dale a Comprobar</label>
+      <label class="check"><input type="checkbox" data-task="speak" /> 15 min Speak: grábate con el celular diciendo las 3 frases seguidas</label>
+      <p class="hint">Se guarda por día en este dispositivo. Lo importante es no romper la racha.</p>
+      <p>Racha: <strong id="streak">0 días</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>Cómo usarla en el celular (sin APK)</h2>
+      <ol>
+        <li>Abre esta página en Chrome del celular.</li>
+        <li>Menú ⋮ → <strong>Agregar a pantalla principal</strong> → queda como app con icono.</li>
+        <li>Funciona sin internet después de la primera carga.</li>
+      </ol>
+      <p class="hint">No hice APK porque: compilar APK (Expo EAS + firma + Play) es 10x más trabajo para lo mismo. Esta PWA ya se instala, pesa &lt;100KB y te sirve de portafolio web para remoto. Si algún día quieres notificaciones nativas o offline total en tienda, ahí sí pasamos a APK.</p>
+      <button id="installBtn" hidden>Instalar app</button>
+    </section>
+  </main>
+
+  <footer>
+    <small>Hecha para Carlos · código y variables en inglés, explicaciones en español · frase correcta usa <code>I</code> mayúscula, <code>work</code> no <code>word</code>, <code>at</code> + empresa.</small>
+  </footer>
+
+  <script src="./app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.hidden = false;
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+      installBtn.hidden = true;
+    });
+  </script>
+</body>
+</html>
