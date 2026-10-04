@@ -8,11 +8,11 @@ const LEVELS = [
     goal: "Meta: presentarte sin mirar. Si dominas estas 5, ya eres A1.",
     canDo: "Puedes decir tu nombre, de donde eres y donde trabajas.",
     phrases: [
-      { id: "p-name", en: "My name is Carlos.", es: "Me llamo Carlos.", tip: "I siempre en mayuscula. My = mi." },
-      { id: "p-from", en: "I am from Monteria, Colombia.", es: "Soy de Monteria, Colombia.", tip: "I am = yo soy. From = de/donde." },
-      { id: "p-dev", en: "I am a developer.", es: "Soy desarrollador.", tip: "A + singular: a developer, no a developers." },
-      { id: "p-work", en: "I work as a developer.", es: "Trabajo como desarrollador.", tip: "Work as + rol. Work con k = trabajo." },
-      { id: "p-study", en: "I study programming every day.", es: "Estudio programacion todos los dias.", tip: "Every day = todos los dias. Bloque de habito." }
+      { id: "p-name", en: "My name is Alex.", es: "Me llamo Alex.", tip: "I siempre en mayuscula. My = mi. Cambia Alex por tu nombre." },
+      { id: "p-from", en: "I am from Colombia.", es: "Soy de Colombia.", tip: "I am = yo soy. From = de. Cambia por tu pais o ciudad." },
+      { id: "p-dev", en: "I am a student.", es: "Soy estudiante.", tip: "A + singular: a student. Cambia por tu rol: developer, teacher..." },
+      { id: "p-work", en: "I work every day.", es: "Trabajo todos los dias.", tip: "Work con k = trabajo. Every day = todos los dias." },
+      { id: "p-study", en: "I study English every day.", es: "Estudio ingles todos los dias.", tip: "Study = estudiar. Tu habito de 1 hora." }
     ]
   },
   {
@@ -23,7 +23,7 @@ const LEVELS = [
     phrases: [
       { id: "a1-hello", en: "Hello, how are you?", es: "Hola, como estas?", tip: "How are you = como estas." },
       { id: "a1-fine", en: "I am fine, thank you.", es: "Estoy bien, gracias.", tip: "Fine = bien. Thank you = gracias." },
-      { id: "a1-live", en: "I live in Monteria.", es: "Vivo en Monteria.", tip: "Live = vivir. I live = yo vivo." },
+      { id: "a1-live", en: "I live in Colombia.", es: "Vivo en Colombia.", tip: "Live = vivir. Cambia por tu ciudad." },
       { id: "a1-help", en: "I need help, please.", es: "Necesito ayuda, por favor.", tip: "I need = necesito. Clave para trabajar remoto." },
       { id: "a1-repeat", en: "Can you repeat, please?", es: "Puedes repetir, por favor?", tip: "Frase salvavidas en calls. Usala sin pena." },
       { id: "a1-understand", en: "I do not understand.", es: "No entiendo.", tip: "Do not = no. Mejor que quedarse callado." }
@@ -39,7 +39,7 @@ const LEVELS = [
       { id: "a2-today", en: "Today I work on the login.", es: "Hoy trabajo en el login.", tip: "Today = hoy. Work on = trabajar en algo." },
       { id: "a2-tomorrow", en: "Tomorrow I will deploy the app.", es: "Manana desplegare la app.", tip: "Will = futuro. I will deploy = desplegare." },
       { id: "a2-everyday", en: "I drink coffee every morning.", es: "Tomo cafe cada manana.", tip: "Every morning = cada manana. Rutina." },
-      { id: "a2-like", en: "I like Next.js and TypeScript.", es: "Me gusta Next.js y TypeScript.", tip: "I like = me gusta. Tu stack real." }
+      { id: "a2-like", en: "I like music and movies.", es: "Me gustan la musica y las peliculas.", tip: "I like = me gusta(n). Cambia por tus gustos." }
     ]
   },
   {

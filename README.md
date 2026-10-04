@@ -1,6 +1,6 @@
 # English Dev Daily
 
-App web PWA para Carlos: rutina de 1h/dia de Pre-A1 a B2 con frases de devs para remoto USA.
+App web PWA: rutina de 1h/dia de Pre-A1 a B2 con frases para la vida diaria y, en niveles altos, para devs que buscan remoto.
 
 ## Por que web y no APK?
 
