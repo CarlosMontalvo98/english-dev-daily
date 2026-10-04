@@ -1,5 +1,6 @@
 // English Dev Daily - logica en JS simple. Comentarios en espanol, variables en ingles.
-// Niveles Pre-A1 a B2 con frases para devs. Progreso en localStorage.
+// Niveles oficiales CEFR Pre-A1 a B2, vocabulario general. Progreso en localStorage.
+// La app NO certifica: al completar un nivel te indica el test gratis (EF SET).
 
 const LEVELS = [
   {
@@ -17,55 +18,64 @@ const LEVELS = [
   },
   {
     id: "a1",
-    label: "A1 · Supervivencia",
-    goal: "Meta: saludar, pedir ayuda y pedir que repitan en una call.",
-    canDo: "Puedes sobrevivir a un saludo en una daily.",
+    label: "A1 · Inicial",
+    goal: "Meta oficial A1: saludar, datos personales, familia, precios y hora. Al completar, valida con EF SET gratis.",
+    canDo: "Puedes presentarte, hablar de tu familia y desenvolverte comprando o preguntando la hora.",
     phrases: [
       { id: "a1-hello", en: "Hello, how are you?", es: "Hola, como estas?", tip: "How are you = como estas." },
       { id: "a1-fine", en: "I am fine, thank you.", es: "Estoy bien, gracias.", tip: "Fine = bien. Thank you = gracias." },
       { id: "a1-live", en: "I live in Colombia.", es: "Vivo en Colombia.", tip: "Live = vivir. Cambia por tu ciudad." },
-      { id: "a1-help", en: "I need help, please.", es: "Necesito ayuda, por favor.", tip: "I need = necesito. Clave para trabajar remoto." },
-      { id: "a1-repeat", en: "Can you repeat, please?", es: "Puedes repetir, por favor?", tip: "Frase salvavidas en calls. Usala sin pena." },
+      { id: "a1-family", en: "I have two brothers.", es: "Tengo dos hermanos.", tip: "I have = yo tengo. Cambia el numero." },
+      { id: "a1-time", en: "What time is it?", es: "Que hora es?", tip: "Pregunta oficial A1. Respuesta: It is three o'clock." },
+      { id: "a1-price", en: "How much is it?", es: "Cuanto cuesta?", tip: "How much = cuanto. Clave para compras." },
+      { id: "a1-help", en: "I need help, please.", es: "Necesito ayuda, por favor.", tip: "I need = necesito." },
+      { id: "a1-repeat", en: "Can you repeat, please?", es: "Puedes repetir, por favor?", tip: "Can you = puedes. Usala sin pena." },
       { id: "a1-understand", en: "I do not understand.", es: "No entiendo.", tip: "Do not = no. Mejor que quedarse callado." }
     ]
   },
   {
     id: "a2",
-    label: "A2 · Base pasado/futuro",
-    goal: "Meta: hablar de ayer y manana. Base del standup.",
-    canDo: "Puedes decir que hiciste y que haras.",
+    label: "A2 · Basico",
+    goal: "Meta oficial A2: pasado, futuro, rutinas, viajes y gustos. Al completar, valida con EF SET gratis.",
+    canDo: "Puedes contar que hiciste, tus planes y describir experiencias simples.",
     phrases: [
-      { id: "a2-yesterday", en: "Yesterday I fixed a bug.", es: "Ayer arregle un bug.", tip: "Yesterday = ayer. Fixed = arregle (pasado)." },
-      { id: "a2-today", en: "Today I work on the login.", es: "Hoy trabajo en el login.", tip: "Today = hoy. Work on = trabajar en algo." },
-      { id: "a2-tomorrow", en: "Tomorrow I will deploy the app.", es: "Manana desplegare la app.", tip: "Will = futuro. I will deploy = desplegare." },
+      { id: "a2-yesterday", en: "Yesterday I visited my grandmother.", es: "Ayer visite a mi abuela.", tip: "Yesterday = ayer. Visited = visite (pasado -ed)." },
+      { id: "a2-today", en: "Today I cook lunch at home.", es: "Hoy cocino el almuerzo en casa.", tip: "Today = hoy. Presente para rutinas." },
+      { id: "a2-tomorrow", en: "Tomorrow I will visit the doctor.", es: "Manana visitare al medico.", tip: "Will = futuro. I will = yo hare." },
+      { id: "a2-trip", en: "I went to the beach last year.", es: "Fui a la playa el ano pasado.", tip: "Went = fui (pasado irregular de go)." },
+      { id: "a2-food", en: "The food was delicious.", es: "La comida estaba deliciosa.", tip: "Was = era/estaba (pasado de is)." },
       { id: "a2-everyday", en: "I drink coffee every morning.", es: "Tomo cafe cada manana.", tip: "Every morning = cada manana. Rutina." },
       { id: "a2-like", en: "I like music and movies.", es: "Me gustan la musica y las peliculas.", tip: "I like = me gusta(n). Cambia por tus gustos." }
     ]
   },
   {
     id: "b1",
-    label: "B1 · Daily de dev",
-    goal: "Meta: dar tu daily standup de 30 segundos.",
-    canDo: "Puedes participar en una daily y pedir una reunion.",
+    label: "B1 · Intermedio",
+    goal: "Meta oficial B1: opinions, planes, experiencias y explicar problemas. Al completar, valida con EF SET gratis.",
+    canDo: "Puedes dar tu opinion, hablar de planes y explicar un problema con detalle.",
     phrases: [
-      { id: "b1-standup1", en: "Yesterday I worked on the API.", es: "Ayer trabaje en la API.", tip: "Estructura real de standup." },
-      { id: "b1-standup2", en: "Today I will fix the database error.", es: "Hoy arreglare el error de la base de datos.", tip: "Today I will = hoy voy a." },
-      { id: "b1-blocker", en: "I have a blocker with the login.", es: "Tengo un bloqueo con el login.", tip: "Blocker = palabra clave en remoto USA." },
+      { id: "b1-opinion", en: "In my opinion, this is a good idea.", es: "En mi opinion, esta es una buena idea.", tip: "In my opinion = en mi opinion. Opinion propia." },
+      { id: "b1-plan", en: "I plan to travel next month.", es: "Planeo viajar el proximo mes.", tip: "I plan to = planeo. Next month = proximo mes." },
+      { id: "b1-problem", en: "The problem is that the page is slow.", es: "El problema es que la pagina esta lenta.", tip: "The problem is that = el problema es que. Explica causa." },
+      { id: "b1-reason", en: "I did not go because I was tired.", es: "No fui porque estaba cansado.", tip: "Because = porque. I did not = no fui." },
+      { id: "b1-experience", en: "It was an interesting experience.", es: "Fue una experiencia interesante.", tip: "Interesting = interesante.-it suffixes." },
       { id: "b1-meeting", en: "Can we have a meeting tomorrow?", es: "Podemos tener una reunion manana?", tip: "Can we = podemos (propuesta educada)." },
-      { id: "b1-pr", en: "I will send the pull request today.", es: "Enviare el pull request hoy.", tip: "Pull request = tu entrega diaria." }
+      { id: "b1-opinion2", en: "I think English is easier than I thought.", es: "Creo que el ingles es mas facil de lo que pensaba.", tip: "I think = creo. Easier than = mas facil que." }
     ]
   },
   {
     id: "b2",
-    label: "B2 · Entrevista (minimo empleable)",
-    goal: "Meta: pasar una entrevista tecnica en ingles.",
-    canDo: "Puedes explicar tu experiencia y decisiones tecnicas.",
+    label: "B2 · Avanzado",
+    goal: "Meta oficial B2: argumentar, explicar causas, uso del condicional y expresiones Idiomaticas. Al completar, valida con EF SET gratis.",
+    canDo: "Puedes defender una opinion, explicar decisiones y desenvolverte con fluidez en temasabstractos.",
     phrases: [
-      { id: "b2-exp", en: "I have two years of experience with Next.js and TypeScript.", es: "Tengo dos anos de experiencia con Next.js y TypeScript.", tip: "I have = tengo (experiencia). Ajusta los anos reales." },
-      { id: "b2-resp", en: "I am responsible for the API and the database.", es: "Soy responsable de la API y la base de datos.", tip: "Responsible for = responsable de." },
-      { id: "b2-chose", en: "I chose Postgres because it is fast and reliable.", es: "Elegi Postgres porque es rapido y confiable.", tip: "Because = porque. Explicar decisiones = B2." },
-      { id: "b2-project", en: "In my last project I reduced load time by thirty percent.", es: "En mi ultimo proyecto reduje el tiempo de carga 30%.", tip: "Dato con numero impresiona en entrevista." },
-      { id: "b2-remote", en: "I am looking for a remote position because I want to grow.", es: "Busco un puesto remoto porque quiero crecer.", tip: "Looking for = buscando. Cierre de entrevista." }
+      { id: "b2-arg", en: "Although it was difficult, I managed to finish it.", es: "Aunque fue dificil, logre terminarlo.", tip: "Although = aunque. I managed to = logre." },
+      { id: "b2-cond", en: "If I had more time, I would learn another language.", es: "Si tuviera mas tiempo, aprenderia otro idioma.", tip: "If + pasad: If I had, I would. Condicional 2." },
+      { id: "b2-cause", en: "The main reason is that it was too expensive.", es: "La razon principal es que era demasiado caro.", tip: "The main reason is that = la razon principal es que." },
+      { id: "b2-habit", en: "I used to work in an office, but now I work from home.", es: "Solia trabajar en una oficina, pero ahora trabajo desde casa.", tip: "Used to = solia (habito pasado)." },
+      { id: "b2-idiom", en: "It depends on the situation.", es: "Depende de la situacion.", tip: "It depends on = depende de. Frase util B2." },
+      { id: "b2-advice", en: "You should consider taking a break.", es: "Deberias considerar tomar un descanso.", tip: "You should = deberias. Consider = considerar." },
+      { id: "b2-regret", en: "I wish I had started earlier.", es: "Ojalá hubiera empezado antes.", tip: "I wish = ojalá. Expresa deseo sobre el pasado." }
     ]
   }
 ];
@@ -151,9 +161,13 @@ function speak(text) {
 
 function renderLevelInfo() {
   const level = LEVELS.find((l) => l.id === activeLevel);
-  document.getElementById("levelInfo").innerHTML =
-    "<strong>" + level.label + "</strong><br>" + level.goal + "<br><span class='hint'>" + level.canDo + "</span>";
   const done = levelDoneCount(level);
+  const completed = done >= level.phrases.length;
+  const banner = completed
+    ? "<div class='cert-ok'><strong>Nivel completado.</strong> Esta app no certifica, pero ya puedes validar tu nivel real gratis en <a href='https://www.efset.org/' target='_blank' rel='noopener'>EF SET</a> (30 min, te da A1-C2 con certificado). Si te da este nivel o mas, ya eres oficialmente " + level.label.split(" · ")[0] + ".</div>"
+    : "";
+  document.getElementById("levelInfo").innerHTML =
+    "<strong>" + level.label + "</strong><br>" + level.goal + "<br><span class='hint'>" + level.canDo + "</span>" + banner;
   const pct = Math.round((done / level.phrases.length) * 100);
   document.getElementById("levelProgress").style.width = pct + "%";
   document.getElementById("levelProgressText").textContent = "· " + done + "/" + level.phrases.length;

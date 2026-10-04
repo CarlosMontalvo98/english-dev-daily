@@ -1,5 +1,5 @@
 // Cache simple para uso sin internet despues de la primera carga.
-const CACHE = 'engdaily-v5';
+const CACHE = 'engdaily-v6';
 const ASSETS = ['./', './index.html', './styles.css', './app.js', './manifest.webmanifest'];
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
