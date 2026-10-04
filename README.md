@@ -39,8 +39,10 @@ En el celular abre esa URL > menu > Agregar a pantalla principal.
 
 ## Niveles
 
-- Pre-A1 Starter: presentarte (tu base actual)
-- A1 Supervivencia: pedir ayuda y que repitan
-- A2 Base: pasado y futuro para standup
-- B1 Daily: daily completa y blockers
-- B2 Entrevista: minimo empleable remoto USA
+- Pre-A1 Starter: presentarte
+- A1 Inicial: datos personales, familia, precios, hora
+- A2 Basico: pasado, futuro, rutinas, viajes
+- B1 Intermedio: opiniones, planes, explicar problemas
+- B2 Avanzado: argumentar, condicionales, expresiones idiomaticas
+
+La app no certifica. Al completar cada nivel sugiere validar con EF SET (gratis, A1-C2 con certificado).
