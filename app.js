@@ -11,7 +11,7 @@ const LEVELS = [
       { id: "p-name", en: "My name is Carlos.", es: "Me llamo Carlos.", tip: "I siempre en mayuscula. My = mi." },
       { id: "p-from", en: "I am from Monteria, Colombia.", es: "Soy de Monteria, Colombia.", tip: "I am = yo soy. From = de/donde." },
       { id: "p-dev", en: "I am a developer.", es: "Soy desarrollador.", tip: "A + singular: a developer, no a developers." },
-      { id: "p-work", en: "I work at Click Software.", es: "Trabajo en Click Software.", tip: "Work con k = trabajo. Word = palabra. At + empresa." },
+      { id: "p-work", en: "I work as a developer.", es: "Trabajo como desarrollador.", tip: "Work as + rol. Work con k = trabajo." },
       { id: "p-study", en: "I study programming every day.", es: "Estudio programacion todos los dias.", tip: "Every day = todos los dias. Bloque de habito." }
     ]
   },
@@ -143,15 +143,15 @@ function renderPhrases() {
     const card = document.createElement("div");
     card.className = "phrase" + (isDone ? " done" : "");
     card.innerHTML =
-      "<p class='en'>" + phrase.en + "</p>" +
-      "<button data-act='toggle'>Mostrar espanol</button>" +
+      "<p class='es-main'>" + phrase.es + "</p>" +
+      "<button data-act='toggle' aria-label='Mostrar ingles' title='Mostrar ingles'>👁</button>" +
       "<div data-part='hidden' hidden>" +
-      "<p class='es'>" + phrase.es + "</p>" +
+      "<p class='en'>" + phrase.en + "</p>" +
       "<div class='tip'>Tip: " + phrase.tip + "</div>" +
       "</div>" +
       "<div class='row'>" +
       "<button data-act='listen'>Escuchar</button>" +
-      "<input type='text' placeholder='Write it in ENGLISH here, tal cual arriba...' aria-label='Escribe la frase en ingles' />" +
+      "<input type='text' placeholder='Write the ENGLISH for the Spanish above...' aria-label='Escribe la frase en ingles' />" +
       "<button class='primary' data-act='check'>Comprobar</button>" +
       "<button data-act='speak'>La dije en voz alta</button>" +
       "<button data-act='reset'>Reintentar</button>" +
@@ -164,7 +164,8 @@ function renderPhrases() {
     toggleBtn.onclick = () => {
       const isHidden = hiddenPart.hidden;
       hiddenPart.hidden = !isHidden;
-      toggleBtn.textContent = isHidden ? "Ocultar espanol" : "Mostrar espanol";
+      toggleBtn.textContent = isHidden ? "🙈" : "👁";
+      toggleBtn.setAttribute("aria-label", isHidden ? "Ocultar ingles" : "Mostrar ingles");
     };
     if (isDone) msg.innerHTML = "<span class='ok'>Dominada. Repasala manana para no olvidarla.</span>";
 
@@ -181,7 +182,7 @@ function renderPhrases() {
       if (normalize(input.value) === normalize(phrase.en)) {
         state.done[key] = true; saveProgress(state); renderAll();
       } else if (normalize(input.value) === normalize(phrase.es)) {
-        msg.textContent = "Eso esta en espanol. Aqui tienes que escribirla en INGLES, tal cual la ves arriba: \"" + phrase.en + "\"";
+        msg.textContent = "Eso esta en espanol. Aqui va en INGLES: dale al ojito para verla, tapala y escribela de memoria: \"" + phrase.en + "\"";
         msg.className = "msg bad";
       } else {
         msg.textContent = "Casi. Escucha de nuevo, fijate en I mayuscula y el punto final. Intenta otra vez.";
